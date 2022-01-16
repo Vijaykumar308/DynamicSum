@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Sum</title>
+	<style>
+		*{margin: 0;padding: 0; box-sizing: border-box;}
+		body{
+			background-color: #264A92; 
+		}
+		.box{
+			width: 400px;
+			height: 400px;
+			padding: 20px;
+		    /*background: darkcyan;*/
+		    position: absolute;
+		    top: 50%;left: 50%;
+		    transform: translate(-50%,-50%);
+		}
+		.box input{
+			width: 330px;
+			font-size: 19px;
+			margin: 15px;
+			padding: 15px 13px;
+			text-align: center;
+		}
+		.total{
+			width: 200px;
+			height: 150px;
+			background-color: #fff;
+			position: absolute;
+			top: 30%; left: 15%;
+		}
+		.aa{
+			font-family: sans-serif;
+			text-align: center;
+			padding-top: 20px;
+		}
+		#ans{
+			color: lightseagreen;
+			font-size: 40px;
+			text-shadow: 1px 2px 2px #000;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="aa" style="color: #fff; text-shadow:1px 2px 15px #000; margin-top: 20px;">Disabled input field if sum more than 100</h1>
+	<div class="box">
+		<input type="number" id="firstNumber" placeholder="Enter first number">
+		<input type="number" id="secondNumber" placeholder="Enter second number">
+		<input type="number" id="thridNumber" placeholder="Enter  third number">
+		<input type="number" id="fourthNumber" placeholder="Enter fourth number">
+	</div>
+	<div class="total">
+			<h1 class="aa">Total</h1>
+			<h2 id="ans" class="aa">0</h2>
+	</div>
+	<script>
+		let first = document.getElementById('firstNumber');
+		let second =document.getElementById("secondNumber");
+		let thrid = document.getElementById("thridNumber");
+		let fourth =document.getElementById("fourthNumber");
+		let ans = document.getElementById("ans");
+
+		let firstVal=0; let secondVal=0; let thridVal=0; let fourthVal=0;
+		let total = 0;
+
+		first.addEventListener("keyup",()=>{
+			firstVal = Number(first.value);
+			total = firstVal + secondVal + thridVal + fourthVal;
+			// console.log("firstVal: "+firstVal);
+			console.log("Total: "+total);
+			ans.innerHTML = total;
+			if (total > 100){
+				second.setAttribute("disabled","true");
+				thrid.setAttribute("disabled","true");
+				fourth.setAttribute("disabled","true");
+			}else{
+				second.removeAttribute("disabled");
+				thrid.removeAttribute("disabled");
+				fourth.removeAttribute("disabled");
+			}
+		});
+		second.addEventListener("keyup",()=>{
+			secondVal = Number(second.value);
+			total = firstVal + secondVal + thridVal + fourthVal;
+			// console.log("first value from sec: "+firstVal);
+			// console.log("Total: "+total);
+			ans.innerHTML = total;
+			if (total > 100){
+				first.setAttribute("disabled","true");
+				thrid.setAttribute("disabled","true");
+				fourth.setAttribute("disabled","true");
+			}else{
+				first.removeAttribute("disabled");
+				thrid.removeAttribute("disabled");
+				fourth.removeAttribute("disabled");
+			}
+		});
+		thrid.addEventListener("keyup",()=>{
+			thridVal = Number(thrid.value);
+			total = firstVal + secondVal + thridVal + fourthVal;
+			// console.log("Total: "+total);
+			ans.innerHTML = total;
+			if (total > 100){
+				first.setAttribute("disabled","true");
+				second.setAttribute("disabled","true");
+				fourth.setAttribute("disabled","true");
+			}else{
+				first.removeAttribute("disabled");
+				second.removeAttribute("disabled");
+				fourth.removeAttribute("disabled");
+			}
+			// console.log(thridVal);
+			// checkSum(sum+thridVal);
+		});
+		fourth.addEventListener("keyup",()=>{
+			fourthVal = Number(fourth.value);
+			total = firstVal + secondVal + thridVal + fourthVal;
+			// console.log("Total: "+total);
+			ans.innerHTML = total;
+			if (total > 100){
+				first.setAttribute("disabled","true");
+				second.setAttribute("disabled","true");
+				thrid.setAttribute("disabled","true");
+			}else{
+				first.removeAttribute("disabled");
+				second.removeAttribute("disabled");
+				thrid.removeAttribute("disabled");
+			}
+			// console.log("Sum is: "+sum);
+			// checkSum(sum+fourthVal);
+		}); 			
+
+		const checkSum = (sum) =>{
+
+			if(sum > 100){
+				alert(`${sum} is greater than 100`);
+				console.log(sum);
+				first.setAttribute("disabled","true");
+				second.setAttribute("disabled","true");
+				thrid.setAttribute("disabled","true");
+				fourth.setAttribute("disabled","true");
+			}else{
+				console.log("The sum is: "+sum);
+			}
+		}	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
